@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root, .dark {
+    --background: 222 47% 7%;
+    --foreground: 210 40% 98%;
+
+    --card: 223 40% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 223 40% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 191 95% 68%;
+    --primary-foreground: 222 47% 10%;
+
+    --secondary: 220 25% 18%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 24% 14%;
+    --muted-foreground: 216 15% 72%;
+
+    --accent: 219 37% 19%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 350 83% 63%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 218 30% 19%;
+    --input: 218 30% 19%;
+    --ring: 191 95% 68%;
+
+    --radius: 1.25rem;
+
+    --sidebar-background: 222 47% 7%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 191 95% 68%;
+    --sidebar-primary-foreground: 222 47% 10%;
+    --sidebar-accent: 219 37% 16%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 218 30% 19%;
+    --sidebar-ring: 191 95% 68%;
+  }
+}
+
+@layer base {
+  html {
+    min-height: 100%;
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    min-height: 100vh;
+    font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+    background-image:
+      radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.18), transparent 28%),
+      radial-gradient(circle at 90% 14%, rgba(251, 191, 36, 0.12), transparent 20%),
+      radial-gradient(circle at 25% 85%, rgba(34, 211, 238, 0.12), transparent 26%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+    background-attachment: fixed;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Space Grotesk", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.03em;
+  }
+
+  ::selection {
+    background: rgba(103, 232, 249, 0.24);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply border border-white/10 bg-slate-950/45 shadow-[0_24px_80px_-36px_rgba(15,23,42,0.95)] backdrop-blur-2xl;
+  }
+
+  .glass-card {
+    @apply border border-white/10 bg-white/[0.045] shadow-[0_18px_60px_-34px_rgba(34,211,238,0.5)] backdrop-blur-xl transition-all duration-300;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-cyan-300 via-sky-300 to-amber-200 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-amber-200 via-yellow-300 to-orange-300 bg-clip-text text-transparent;
+  }
+
+  .hero-shell {
+    @apply relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(160deg,rgba(15,23,42,0.84),rgba(8,15,30,0.72))] p-6 shadow-[0_32px_80px_-40px_rgba(15,23,42,0.95)] backdrop-blur-2xl sm:p-8;
+  }
+
+  .hero-shell::before {
+    content: "";
+    @apply pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(103,232,249,0.18),transparent_30%),radial-gradient(circle_at_80%_20%,rgba(251,191,36,0.12),transparent_24%),linear-gradient(135deg,rgba(255,255,255,0.06),transparent_45%)];
+  }
+
+  .surface-outline {
+    @apply border border-white/10 bg-white/[0.03] backdrop-blur-xl;
+  }
+
+  .metric-chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-sm text-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)];
+  }
+
+  .ambient-ring {
+    @apply absolute rounded-full blur-3xl opacity-80;
+  }
+
+  .grid-fade {
+    background-image:
+      linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: linear-gradient(180deg, transparent, black 20%, black 80%, transparent);
+  }
+
+  .card-glow {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 18px 60px -34px rgba(34, 211, 238, 0.48);
+  }
+
+  .soft-text {
+    color: rgba(226, 232, 240, 0.72);
+  }
+}
